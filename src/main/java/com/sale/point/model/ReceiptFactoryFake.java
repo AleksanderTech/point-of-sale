@@ -14,7 +14,6 @@ public class ReceiptFactoryFake implements ReceiptFactory {
 				sum += p.getCost();
 			}
 			builder.append("TOTAL SUM: ").append(sum).append(" ON RECEIPT").append("\n");
-
 			return builder.toString();
 		}
 
