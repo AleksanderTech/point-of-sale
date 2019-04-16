@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.mockito.stubbing.Answer;
 import com.sale.point.database.ProductDao;
-import com.sale.point.database.ProductDaoFake;
+import com.sale.point.database.ProductDaoInMemory;
 import com.sale.point.inputDevices.BarcodeScanner;
 import com.sale.point.outputDevices.Display;
 import com.sale.point.outputDevices.Printer;
@@ -32,7 +32,7 @@ class CheckoutImplTest {
 		receiptFactory = Mockito.mock(ReceiptFactory.class);
 		printer = Mockito.mock(Printer.class);
 		barcodeScanner = Mockito.mock(BarcodeScanner.class);
-		productDao = new ProductDaoFake(); // -------------------
+		productDao = new ProductDaoInMemory(); // -------------------
 		basket = Mockito.mock(Basket.class);
 	}
 

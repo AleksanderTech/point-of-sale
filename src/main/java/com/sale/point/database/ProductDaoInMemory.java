@@ -6,7 +6,7 @@ import java.util.Optional;
 
 import com.sale.point.model.Product;
 
-public class ProductDaoFake implements ProductDao{
+public class ProductDaoInMemory implements ProductDao{
 	
 	private static final Map<String, Product> PRODUCTS = new HashMap<>();
 	

@@ -2,7 +2,7 @@ package com.sale.point.model;
 
 import java.util.List;
 
-public class ReceiptFactoryStub implements ReceiptFactory {
+public class ReceiptFactoryFake implements ReceiptFactory {
 
 	@Override
 	public String create(List<Product> products) {
