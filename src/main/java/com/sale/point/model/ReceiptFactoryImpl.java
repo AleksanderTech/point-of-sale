@@ -2,7 +2,7 @@ package com.sale.point.model;
 
 import java.util.List;
 
-public class ReceiptFactoryFake implements ReceiptFactory {
+public class ReceiptFactoryImpl implements ReceiptFactory {
 
 	@Override
 	public String create(List<Product> products) {
@@ -16,5 +16,4 @@ public class ReceiptFactoryFake implements ReceiptFactory {
 			builder.append("TOTAL SUM: ").append(sum).append(" ON RECEIPT").append("\n");
 			return builder.toString();
 		}
-
 }

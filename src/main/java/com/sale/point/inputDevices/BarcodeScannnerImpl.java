@@ -2,7 +2,7 @@ package com.sale.point.inputDevices;
 
 import java.util.Random;
 
-public class BarcodeScannnerFake implements BarcodeScanner {
+public class BarcodeScannnerImpl implements BarcodeScanner {
 
 	public static final Random RANDOM = new Random();
 

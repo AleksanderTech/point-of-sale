@@ -3,7 +3,7 @@ package com.sale.point.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BasketStub implements Basket {
+public class BasketFake implements Basket {
 
 	private final List<Product> products = new ArrayList<>();
 

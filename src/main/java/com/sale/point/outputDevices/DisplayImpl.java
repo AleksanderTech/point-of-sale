@@ -2,7 +2,7 @@ package com.sale.point.outputDevices;
 
 import com.sale.point.model.Product;
 
-public class DisplayFake implements Display {
+public class DisplayImpl implements Display {
 
 	@Override
 	public void displayProduct(Product product) {

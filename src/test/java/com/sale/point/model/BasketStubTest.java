@@ -12,7 +12,7 @@ class BasketStubTest {
 
 	@BeforeEach
 	void setUp() {
-		basket = new BasketStub();
+		basket = new BasketFake();
 	}
 
 	@Test
