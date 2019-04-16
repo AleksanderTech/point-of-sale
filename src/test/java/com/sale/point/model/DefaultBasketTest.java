@@ -16,7 +16,7 @@ class DefaultBasketTest {
 	}
 
 	@Test
-	public void returnsSumOfCostsOfAllProducts() {
+	void returnsSumOfCostsOfAllProducts() {
 		List<Product> products = new ArrayList<>(createsListOfProducts(45.0, 21.1));
 		basket.addProduct(products.get(0));
 		basket.addProduct(products.get(1));
@@ -25,14 +25,14 @@ class DefaultBasketTest {
 	}
 
 	@Test
-	public void addsProductToTheList() {
+	void addsProductToTheList() {
 		Product product = new Product("coffee", 33.0, "12336");
 		basket.addProduct(product);
 		assertEquals(product, basket.getProducts().get(0));
 	}
 
 	@Test
-	public void clearsListOfProducts() {
+	void clearsListOfProducts() {
 		List<Product> products = new ArrayList<>();
 		basket.addProduct(new Product("", 0, ""));
 		basket.clear();

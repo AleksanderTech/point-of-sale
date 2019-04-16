@@ -16,7 +16,7 @@ class DefaultReceiptFactoryTest {
 		assertEquals(expected, actual);
 	}
 
-	public String create(List<Product> products) {
+	private String create(List<Product> products) {
 		StringBuilder builder = new StringBuilder();
 		double sum = 0;
 		for (Product p : products) {

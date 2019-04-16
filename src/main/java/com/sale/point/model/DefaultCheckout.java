@@ -1,16 +1,15 @@
 package com.sale.point.model;
 
 import java.util.Optional;
-
 import com.sale.point.data.ProductDao;
 import com.sale.point.devices.Display;
 import com.sale.point.devices.Printer;
 
 public class DefaultCheckout implements Checkout {
 
-	private static final String EXIT_CODE = "exit";
-	private static final String PRODUCT_NOT_FOUND = "Product not found";
-	private static final String INVALID_BAR_CODE = "Invalid bar-code";
+	private static final String EXIT = "exit";
+	private static final String NOT_FOUND_BARCODE = "Product not found";
+	private static final String INVALID_BARCODE = "Invalid bar-code";
 	private final Display display;
 	private final ReceiptFactory receiptFactory;
 	private final Printer printer;
@@ -29,7 +28,7 @@ public class DefaultCheckout implements Checkout {
 	@Override
 	public void manageProductScan(String barcode) {
 		if (isInvalidBarcode(barcode)) {
-			display.displayMessage(INVALID_BAR_CODE);
+			display.displayMessage(INVALID_BARCODE);
 		} else {
 			manageValidBarcode(barcode);
 		}
@@ -41,12 +40,12 @@ public class DefaultCheckout implements Checkout {
 			display.displayProduct(optional.get());
 			basket.addProduct(optional.get());
 		} else {
-			display.displayMessage(PRODUCT_NOT_FOUND);
+			display.displayMessage(NOT_FOUND_BARCODE);
 		}
 	}
 
 	private boolean isExitBarcode(String barcode) {
-		return barcode.equals(EXIT_CODE);
+		return barcode.equals(EXIT);
 	}
 
 	private void manageValidBarcode(String barcode) {

@@ -16,7 +16,7 @@ public class Application {
 		DefaultCheckout checkoutImpl = new DefaultCheckout(new FakeDisplay(), new DefaultReceiptFactory(), new FakePrinter(),
 				new InMemoryProductDao(), new DefaultBasket());
 		BarcodeScanner barcodeScanner=new FakeBarcodeScanner();
-		for (int i = 0; i < 50; i++) {
+		for (int i = 0; i < 100; i++) {
 			checkoutImpl.manageProductScan(barcodeScanner.readScan());
 		}
 
