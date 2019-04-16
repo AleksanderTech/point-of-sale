@@ -43,13 +43,13 @@ class CheckoutImplTest {
 		final String barcodeOfProductOne = "12347";
 		final List<Product> products = new ArrayList<>();
 		Product productOne = productDao.findProductsByBarcode(barcodeOfProductOne).get();
-		CheckoutImpl checkoutExample = new CheckoutImpl(display, receiptFactory, printer, productDao, basket);
+		CheckoutImpl checkoutImpl = new CheckoutImpl(display, receiptFactory, printer, productDao, basket);
 		doAnswer((Answer<?>) invocation -> {
 			products.add(productOne);
 			return null;
 		}).when(basket).addProduct(productOne);
 		// when
-		checkoutExample.manageProductScan(barcodeOfProductOne);
+		checkoutImpl.manageProductScan(barcodeOfProductOne);
 		// then
 		verify(display).displayProduct(productOne);
 		verify(basket).addProduct(productOne);
@@ -62,9 +62,9 @@ class CheckoutImplTest {
 		// given
 		final String barcodeOfNotExistingProduct = "notExistingInDatabase";
 		final String productNotFoundMessage = "Product not found";
-		CheckoutImpl checkoutExample = new CheckoutImpl(display, receiptFactory, printer, productDao, basket);
+		CheckoutImpl checkoutImpl = new CheckoutImpl(display, receiptFactory, printer, productDao, basket);
 		// when
-		checkoutExample.manageProductScan(barcodeOfNotExistingProduct);
+		checkoutImpl.manageProductScan(barcodeOfNotExistingProduct);
 		// then
 		verify(display).dispayMessage(productNotFoundMessage);
 	}
@@ -75,9 +75,9 @@ class CheckoutImplTest {
 		// given
 		final String emptyInvalidBarcode = "";
 		final String invalidMessage = "Invalid bar-code";
-		CheckoutImpl checkoutExample = new CheckoutImpl(display, receiptFactory, printer, productDao, basket);
+		CheckoutImpl checkoutImpl = new CheckoutImpl(display, receiptFactory, printer, productDao, basket);
 		// when
-		checkoutExample.manageProductScan(emptyInvalidBarcode);
+		checkoutImpl.manageProductScan(emptyInvalidBarcode);
 		// then
 		verify(display).dispayMessage(invalidMessage);
 	}
@@ -88,9 +88,9 @@ class CheckoutImplTest {
 		// given
 		final String nullInvalidBarcode = null;
 		final String invalidMessage = "Invalid bar-code";
-		CheckoutImpl checkoutExample = new CheckoutImpl(display, receiptFactory, printer, productDao, basket);
+		CheckoutImpl checkoutImpl = new CheckoutImpl(display, receiptFactory, printer, productDao, basket);
 		// when
-		checkoutExample.manageProductScan(nullInvalidBarcode);
+		checkoutImpl.manageProductScan(nullInvalidBarcode);
 		// then
 		verify(display).dispayMessage(invalidMessage);
 	}
