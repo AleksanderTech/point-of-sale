@@ -19,6 +19,7 @@ display
   - when 'exit' is input than receipt is printed on printer containing a list of all previously
 scanned items names and prices as well as total sum to be paid for all items; the total sum is
 also printed on LCD display
+
 Rules:
 * use only SDK classes and your favorite test libraries
 * mock/stub the database and IO devices
