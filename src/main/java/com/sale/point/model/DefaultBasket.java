@@ -3,9 +3,13 @@ package com.sale.point.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BasketFake implements Basket {
+public class DefaultBasket implements Basket {
 
-	private final List<Product> products = new ArrayList<>();
+	private final List<Product> products;
+	
+	public DefaultBasket() {
+		this.products = new ArrayList<>();
+	}
 
 	@Override
 	public void addProduct(Product product) {

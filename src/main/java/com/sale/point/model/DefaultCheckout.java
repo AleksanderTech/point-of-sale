@@ -2,26 +2,26 @@ package com.sale.point.model;
 
 import java.util.Optional;
 
-import com.sale.point.database.ProductDao;
-import com.sale.point.outputDevices.Display;
-import com.sale.point.outputDevices.Printer;
+import com.sale.point.data.ProductDao;
+import com.sale.point.devices.Display;
+import com.sale.point.devices.Printer;
 
-public class CheckoutImpl implements Checkout {
+public class DefaultCheckout implements Checkout {
 
 	private static final String EXIT_CODE = "exit";
 	private static final String PRODUCT_NOT_FOUND = "Product not found";
 	private static final String INVALID_BAR_CODE = "Invalid bar-code";
 	private final Display display;
-	private final ReceiptFactory receipt;
+	private final ReceiptFactory receiptFactory;
 	private final Printer printer;
 	private final ProductDao productDao;
 	private final Basket basket;
 
-	public CheckoutImpl(Display display, ReceiptFactory receipt, Printer printer, ProductDao productDao,
+	public DefaultCheckout(Display display, ReceiptFactory receiptFactory, Printer printer, ProductDao productDao,
 			Basket basket) {
 		this.display = display;
 		this.printer = printer;
-		this.receipt = receipt;
+		this.receiptFactory = receiptFactory;
 		this.productDao = productDao;
 		this.basket = basket;
 	}
@@ -29,7 +29,7 @@ public class CheckoutImpl implements Checkout {
 	@Override
 	public void manageProductScan(String barcode) {
 		if (isInvalidBarcode(barcode)) {
-			display.dispayMessage(INVALID_BAR_CODE);
+			display.displayMessage(INVALID_BAR_CODE);
 		} else {
 			manageValidBarcode(barcode);
 		}
@@ -41,7 +41,7 @@ public class CheckoutImpl implements Checkout {
 			display.displayProduct(optional.get());
 			basket.addProduct(optional.get());
 		} else {
-			display.dispayMessage(PRODUCT_NOT_FOUND);
+			display.displayMessage(PRODUCT_NOT_FOUND);
 		}
 	}
 
@@ -51,7 +51,7 @@ public class CheckoutImpl implements Checkout {
 
 	private void manageValidBarcode(String barcode) {
 		if (isExitBarcode(barcode)) {
-			String receipt = this.receipt.create(basket.getProducts());
+			String receipt = this.receiptFactory.create(basket.getProducts());
 			display.displaySum(basket.calculateCosts());
 			basket.clear();
 			printer.print(receipt);

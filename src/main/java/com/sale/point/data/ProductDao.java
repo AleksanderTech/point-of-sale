@@ -1,4 +1,4 @@
-package com.sale.point.database;
+package com.sale.point.data;
 
 import java.util.Optional;
 

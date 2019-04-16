@@ -11,5 +11,4 @@ public interface Basket {
 	List<Product> getProducts();
 
 	double calculateCosts();
-
 }

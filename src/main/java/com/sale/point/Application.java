@@ -1,23 +1,23 @@
 package com.sale.point;
 
-import com.sale.point.database.ProductDaoInMemory;
-import com.sale.point.inputDevices.BarcodeScanner;
-import com.sale.point.inputDevices.BarcodeScannnerImpl;
-import com.sale.point.model.BasketFake;
-import com.sale.point.model.CheckoutImpl;
-import com.sale.point.model.ReceiptFactoryImpl;
-import com.sale.point.outputDevices.DisplayImpl;
-import com.sale.point.outputDevices.PrinterImpl;
+import com.sale.point.data.InMemoryProductDao;
+import com.sale.point.devices.BarcodeScanner;
+import com.sale.point.devices.FakeBarcodeScanner;
+import com.sale.point.devices.FakeDisplay;
+import com.sale.point.devices.FakePrinter;
+import com.sale.point.model.DefaultBasket;
+import com.sale.point.model.DefaultCheckout;
+import com.sale.point.model.DefaultReceiptFactory;
 
 public class Application {
 
 	public static void main(String[] args) {
 
-		CheckoutImpl groceryCheckout = new CheckoutImpl(new DisplayImpl(), new ReceiptFactoryImpl(), new PrinterImpl(),
-				new ProductDaoInMemory(), new BasketFake());
-		BarcodeScanner barcodeScanner=new BarcodeScannnerImpl();
+		DefaultCheckout checkoutImpl = new DefaultCheckout(new FakeDisplay(), new DefaultReceiptFactory(), new FakePrinter(),
+				new InMemoryProductDao(), new DefaultBasket());
+		BarcodeScanner barcodeScanner=new FakeBarcodeScanner();
 		for (int i = 0; i < 50; i++) {
-			groceryCheckout.manageProductScan(barcodeScanner.readScan());
+			checkoutImpl.manageProductScan(barcodeScanner.readScan());
 		}
 
 	}

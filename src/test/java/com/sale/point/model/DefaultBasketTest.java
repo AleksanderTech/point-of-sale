@@ -6,25 +6,37 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class BasketStubTest {
+class DefaultBasketTest {
 
-	private Basket basket;
+	private DefaultBasket basket;
 
 	@BeforeEach
 	void setUp() {
-		basket = new BasketFake();
+		basket = new DefaultBasket();
 	}
 
 	@Test
-	public void returnsSumOfCostsOfAllProducts() throws Exception {
-		// given
+	public void returnsSumOfCostsOfAllProducts() {
 		List<Product> products = new ArrayList<>(createListOfProducts(45.0, 21.1));
-		// when
 		basket.addProduct(products.get(0));
 		basket.addProduct(products.get(1));
 		double sumPrice = basket.calculateCosts();
-		// then
 		assertEquals(66.1, sumPrice);
+	}
+
+	@Test
+	public void addProductToTheList() {
+		Product product = new Product("coffee", 33.0, "12336");
+		basket.addProduct(product);
+		assertEquals(product, basket.getProducts().get(0));
+	}
+
+	@Test
+	public void clearListOfProducts() {
+		List<Product> products = new ArrayList<>();
+		basket.addProduct(new Product("", 0, ""));
+		basket.clear();
+		assertEquals(products, basket.getProducts());
 	}
 
 	private List<Product> createListOfProducts(double... prices) {
@@ -34,5 +46,5 @@ class BasketStubTest {
 		}
 		return products;
 	}
-
+	
 }

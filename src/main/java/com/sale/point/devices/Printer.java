@@ -1,4 +1,4 @@
-package com.sale.point.outputDevices;
+package com.sale.point.devices;
 
 public interface Printer {
 	void print(String text);

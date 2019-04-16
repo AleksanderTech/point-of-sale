@@ -1,4 +1,4 @@
-package com.sale.point.outputDevices;
+package com.sale.point.devices;
 
 import com.sale.point.model.Product;
 
@@ -6,7 +6,7 @@ public interface Display {
 
 	public void displayProduct(Product product);
 
-	public void dispayMessage(String message);
+	public void displayMessage(String message);
 
 	public void displaySum(double sum);
 
