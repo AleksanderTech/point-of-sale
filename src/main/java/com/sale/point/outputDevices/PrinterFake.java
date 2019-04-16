@@ -1,6 +1,6 @@
 package com.sale.point.outputDevices;
 
-public class HPPrinter implements Printer {
+public class PrinterFake implements Printer {
 
 	@Override
 	public void print(String text) {

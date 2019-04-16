@@ -1,10 +1,12 @@
-package com.sale.point.model;
+package com.sale.point.database;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-public class InMemoryProductDao implements ProductDao{
+import com.sale.point.model.Product;
+
+public class ProductDaoFake implements ProductDao{
 	
 	private static final Map<String, Product> PRODUCTS = new HashMap<>();
 	

@@ -3,7 +3,7 @@ package com.sale.point.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BasketExample implements Basket {
+public class BasketStub implements Basket {
 
 	private final List<Product> products = new ArrayList<>();
 
@@ -30,5 +30,4 @@ public class BasketExample implements Basket {
 	public void clear() {
 		products.clear();
 	}
-
 }

@@ -2,7 +2,7 @@ package com.sale.point.outputDevices;
 
 import com.sale.point.model.Product;
 
-public class LCDDisplay implements Display {
+public class DisplayFake implements Display {
 
 	@Override
 	public void displayProduct(Product product) {
@@ -11,9 +11,12 @@ public class LCDDisplay implements Display {
 
 	@Override
 	public void displaySum(double sum) {
-		if (sum != 0) {
-			System.out.println("LCDDisplay SUM: " + sum);
-		}
+		System.out.println("LCDDisplay SUM: " + sum);
+	}
+
+	@Override
+	public void dispayMessage(String message) {
+		System.out.println(message);
 	}
 
 }

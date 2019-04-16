@@ -1,14 +1,11 @@
-package com.sale.point.outputDevices;
+package com.sale.point.model;
 
 import java.util.List;
 
-import com.sale.point.model.Product;
-
-public class ReceiptCreator implements ReceiptFactory {
+public class ReceiptFactoryStub implements ReceiptFactory {
 
 	@Override
 	public String create(List<Product> products) {
-		if (products.size() != 0) {
 			StringBuilder builder = new StringBuilder();
 			double sum = 0;
 			for (Product p : products) {
@@ -19,9 +16,6 @@ public class ReceiptCreator implements ReceiptFactory {
 			builder.append("TOTAL SUM: ").append(sum).append(" ON RECEIPT").append("\n");
 
 			return builder.toString();
-		} else {
-			return "";
 		}
-	}
 
 }

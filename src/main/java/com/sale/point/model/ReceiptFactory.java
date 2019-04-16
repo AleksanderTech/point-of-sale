@@ -1,8 +1,6 @@
-package com.sale.point.outputDevices;
+package com.sale.point.model;
 
 import java.util.List;
-
-import com.sale.point.model.Product;
 
 public interface ReceiptFactory {
 
