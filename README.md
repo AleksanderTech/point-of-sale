@@ -29,4 +29,4 @@ application
 
 ### From Author
 
-**In order to facilitate example implementation has been created with main class and output devices printing results to the console.**
+**In order to facilitate testing process - example implementation has been created with main class and output devices printing results to the console.**
